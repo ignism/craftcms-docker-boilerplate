@@ -1,0 +1,20 @@
+.header-offset {
+  padding-top: 120px;
+}
+
+.header-main {
+  @apply fixed w-full flex items-center;
+}
+
+.header-main {
+  @apply bg-transparent;
+  padding-bottom: calc($site-offset / 2);
+  padding-top: calc($site-offset * 2);
+  transition: $short ease;
+  
+
+  &.pinned {
+    @apply bg-white;
+    padding-top: $site-offset;
+  }
+}

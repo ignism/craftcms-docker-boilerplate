@@ -1,0 +1,31 @@
+<header class="section header-main header-unpin z-50">
+  <div class="container">
+
+    {% block header %}
+
+      {% set query = craft.globalSets().handle('header') %}
+      {% set headerEntry = query.one() %}
+
+      <nav id="nav-main" class="nav-main flex justify-between items-center" role="navigation">
+        <div class="branding">
+          <a href="/">
+            <span class="font-bold text-xl uppercase tracking-widest"> {{ headerEntry.headerText }}</span>
+          </a>
+        </div>
+
+        <div class="nav-menu text-3xl lg:text-base z-40">
+          {% include "layout/nav.twig" %}
+          <a href="#footer" class="toggle-footer nav-menu-item">footer</a>
+        </div>
+
+        <div class="nav-burger toggle-menu relative z-50">
+          <span></span>
+          <span></span>
+        </div>
+
+      </nav>
+
+    {% endblock %}
+
+  </div>
+</header>

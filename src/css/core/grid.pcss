@@ -1,0 +1,22 @@
+.container {
+  @apply mx-auto;
+  max-width: $site-max-width;
+  padding-left: $site-offset;
+  padding-right: $site-offset;
+}
+
+.section {
+  padding-top: $section-offset;
+  padding-bottom: $section-offset;
+}
+
+.row {
+  @apply flex;
+  margin-left: calc($gutter / -2);
+  margin-right: calc($gutter / -2);
+}
+
+.col {
+  padding-left: calc($gutter / 2);
+  padding-right: calc($gutter / 2);
+}

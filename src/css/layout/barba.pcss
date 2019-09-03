@@ -1,0 +1,58 @@
+/* fade and slide transition active states (same for leave and enter) */
+.barba-fade-leave-active,
+.barba-fade-enter-active,
+.barba-slide-leave-active,
+.barba-slide-enter-active {
+  transition: $medium easeInOutCubic;
+}
+
+/* fade transition states */
+.barba-fade-leave,
+.barba-fade-enter-to {
+  opacity: 1;
+}
+
+.barba-fade-enter,
+.barba-fade-leave-to {
+  opacity: 0;
+}
+
+/* slide transition states */
+.barba-slide-leave {
+  transform: translateY(0);
+  opacity: 1;
+
+}
+.barba-slide-enter-to {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+.barba-slide-leave-to {
+  transform: translateY(-100vh);
+  opacity: 0;
+}
+.barba-slide-enter {
+  transform: translateY(100vh);
+  opacity: 0;
+}
+
+
+.barba-wipe {
+  @apply fixed w-full h-screen inset-x-0 bg-white z-40;
+  top: 100vh;
+  transition: top $medium easeInOutCirc;
+}
+
+.barba-leave {
+  .barba-wipe {
+    top: 0;
+  }
+}
+
+.barba-enter {
+  .barba-wipe {
+    top: 100vh;
+  }
+}

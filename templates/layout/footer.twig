@@ -1,0 +1,28 @@
+<div id="footer" class="footer-wrapper relative">
+
+  <footer class="section footer-main bg-gray-300 text-gray-600 z-50">
+    <div class="container">
+
+      {% block footer %}
+
+        {% set query = craft.globalSets().handle('footer') %}
+        {% set footerEntry = query.one() %}
+
+        <div class="absolute inset-0 container">
+          <div class="flex justify-end">
+            <div class="btn-close toggle-footer">
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <p>{{ footerEntry.footerText }}</p>
+        <p>&copy;
+          {{ "now"|date("Y") }}
+        </p>
+
+      {% endblock %}
+
+    </div>
+  </footer>
+
+</div>

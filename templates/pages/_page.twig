@@ -1,0 +1,17 @@
+{# Default page #}
+
+{% extends "core/base.twig" %}
+
+{% block main %}
+
+  <section class="section header-offset">
+    <div class="container">
+
+      {% if entry.body %}
+        {{ entry.body }}
+      {% endif %}
+      
+    </div>
+  </section>
+
+{% endblock %}

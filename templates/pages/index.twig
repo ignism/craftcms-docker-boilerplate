@@ -1,0 +1,9 @@
+{% switch entry.slug %}
+
+  {% case "styleguide" %}
+    {% include "pages/_styleguide.twig" %}
+
+  {% default %}
+    {% include "pages/_page.twig" %}
+  
+{% endswitch %}

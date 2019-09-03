@@ -1,0 +1,20 @@
+figure {
+  @apply relative;
+
+  img {
+    @apply absolute w-full h-full;
+    object-fit: cover;
+  }
+
+  &.portrait::after {
+    content: '';
+    display: block;
+    padding-top: 150%;
+  }
+
+  &.landscape::after {
+    content: '';
+    display: block;
+    padding-top: 66.66667%;
+  }
+}

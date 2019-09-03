@@ -1,0 +1,26 @@
+/* ignores :hover state for mobile screens  */
+@define-mixin hover $style, $value {
+  &:hover {
+    $(style): $(value);
+  }
+  @media (hover: none) {
+    &:hover {
+      $(style): inherit;
+    }
+  }
+}
+
+@define-mixin hover-child $child, $style, $value {
+  &:hover {
+    $(child) {
+      $(style): $(value);
+    }
+  }
+  @media (hover: none) {
+    &:hover {
+      $(child) {
+        $(style): inherit;
+      }
+    }
+  }
+}

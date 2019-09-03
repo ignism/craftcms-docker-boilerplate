@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "core/metadata.twig" %}
+
+  {% hook "seo" %}
+
+  <link rel="stylesheet" href="/dest/css/main.css">
+</head>
+
+<body class="">
+    <div class="barba-wipe z-40"></div>
+
+    {% block header %}
+      {% include "layout/header.twig" %}
+    {% endblock %}
+
+    <div class="main-wrapper z-10" data-barba="wrapper">
+      <main class="main" data-barba="container" data-barba-namespace="">
+        {% block main %}{% endblock %}
+
+        {% block scripts %}{% endblock %}
+      </main>
+    </div>
+
+    {% block footer %}
+      {% include "layout/footer.twig" %}
+    {% endblock %}
+
+  <script src="/dest/js/main.js"></script>
+</body>
+</html>

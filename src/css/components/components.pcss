@@ -1,0 +1,23 @@
+button,
+.button {
+    @apply px-4 py-2 bg-gray-400 mt-4;
+    transition: $short easeOutCirc;
+    
+    &:hover {
+        @apply shadow-lg;
+        transform: translateY(-0.125em);
+    }
+
+    &:focus {
+        @apply bg-gray-600;
+        outline: none;
+        box-shadow: none;
+        transform: translateY(0);
+    }
+}
+
+table {
+  tr:not(:last-child) {
+    @apply border-b border-gray-300
+  }
+}

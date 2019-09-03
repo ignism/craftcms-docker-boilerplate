@@ -1,0 +1,27 @@
+.footer-main {
+  @apply absolute w-full;
+  flex-shrink: 0;
+
+  .btn-close {
+    @apply flex flex-col justify-center;
+    box-sizing: content-box;
+    width: $burger-width;
+    height: $burger-height;
+    padding-top: calc($site-offset / 2);
+    pointer-events: none;
+    opacity: 0;
+    span {
+      @apply bg-white w-full self-end;
+      height: 2px;
+      transition: $medium easeOutCirc;
+    }
+  }
+
+  &.pinned {
+    .btn-close {
+      pointer-events: all;
+      opacity: 1;
+      transition: $short ease;
+    }
+  }
+}
