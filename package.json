@@ -15,7 +15,7 @@
     "watch": "webpack --config webpack.dev.js --watch",
     "dev": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "setup": "npm run craft-compose; npm run craft-plugins; npm run craft-config; npm run craft-install; npm run craft-build; clear; echo \"\nCompleted!\n\nVisit \\x1b[4m\\x1b[34mhttp://localhost:8080/admin\\x1b[0m to sync project.yaml and finish setup\n\n\"",
+    "setup": "npm run craft-compose; npm run craft-plugins; npm run craft-config; npm run craft-install; npm run craft-build; clear; echo \"\nCompleted!\n\nVisit \\x1b[4m\\x1b[34mhttp://localhost:8080/admin\\x1b[0m to sync project.yaml and finish setup.\n\n\"",
     "postinstall": "npx tailwind init; docker-compose build"
   },
   "keywords": [],

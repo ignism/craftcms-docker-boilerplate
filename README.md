@@ -12,4 +12,4 @@
 
 `$ npm run setup`
 
-4 Visit to `http://localhost:8080/admin` to sync project.yaml
+4 Visit [http://localhost:8080/admin](http://localhost:8080/admin) to sync `project.yaml` and finish setup.
