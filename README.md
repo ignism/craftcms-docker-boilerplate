@@ -1,6 +1,6 @@
 # craftcms-docker-boilerplate
 
-1 Install with:
+1 Install dependencies:
 
 `$ npm install`
 
@@ -8,7 +8,7 @@
 
 `$ npm run serve`
 
-3 Wait for it to finish, then setup craft:
+3 Wait for it to finish, then compose and setup craft:
 
 `$ npm run setup`
 
