@@ -6,35 +6,24 @@
   transition: $medium easeInOutCubic;
 }
 
-/* fade transition states */
-.barba-fade-leave,
-.barba-fade-enter-to {
-  opacity: 1;
-}
-
-.barba-fade-enter,
-.barba-fade-leave-to {
-  opacity: 0;
-}
-
 /* slide transition states */
 .barba-slide-leave {
-  transform: translateY(0);
+  transform: translateX(0);
   opacity: 1;
 
 }
 .barba-slide-enter-to {
-  transform: translateY(0);
+  transform: translateX(0);
   opacity: 1;
 }
 
 
 .barba-slide-leave-to {
-  transform: translateY(-100vh);
+  transform: translateX(-100vw);
   opacity: 0;
 }
 .barba-slide-enter {
-  transform: translateY(100vh);
+  transform: translateX(100vw);
   opacity: 0;
 }
 

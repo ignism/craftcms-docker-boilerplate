@@ -11,7 +11,7 @@ class BarbaManager extends CoreModule {
       barba.init({
         transitions: [
           {
-            name: 'barba-fade',
+            name: 'barba-slide',
 
             beforeLeave() {
               document.body.classList.remove('barba-enter')

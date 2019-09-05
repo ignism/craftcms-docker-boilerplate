@@ -5,7 +5,7 @@
 
   {% hook "seo" %}
 
-  <link rel="stylesheet" href="/dest/css/main.css">
+  <link rel="stylesheet" href="{{ siteUrl }}/build/css/main.css">
 </head>
 
 <body class="">
@@ -27,6 +27,7 @@
       {% include "layout/footer.twig" %}
     {% endblock %}
 
-  <script src="/dest/js/main.js"></script>
+  <script src="{{ siteUrl }}/build/js/common.js"></script>
+  <script src="{{ siteUrl }}/build/js/main.js"></script>
 </body>
 </html>
