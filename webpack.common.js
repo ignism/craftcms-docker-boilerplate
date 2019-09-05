@@ -34,15 +34,6 @@ module.exports = {
 
   module: {
     rules: [{
-      test: /\.ts$/,
-
-      include: [path.resolve(__dirname, 'src')],
-
-      use: {
-        loader: 'babel-loader',
-        loader: 'ts-loader',
-      }
-    }, {
       test: /\.js$/,
 
       include: [path.resolve(__dirname, 'src')],
@@ -104,4 +95,11 @@ module.exports = {
   },
 
   mode: 'development',
+  
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      name: 'common'
+    }
+  }
 }
