@@ -90,12 +90,12 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, 'server/public', 'dest'),
+    path: path.resolve(__dirname, 'server/public', 'build'),
     filename: 'js/[name].js'
   },
 
   mode: 'development',
-  
+
   optimization: {
     splitChunks: {
       chunks: 'all',
