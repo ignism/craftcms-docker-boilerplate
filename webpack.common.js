@@ -18,10 +18,10 @@ module.exports = {
       path.resolve(__dirname, 'server/public', 'dest'),
     ]),
     new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, 'templates'),
+      from: path.resolve(__dirname, 'theme', 'templates'),
       to: path.resolve(__dirname, 'server/private/craft', 'templates')
     }, {
-      from: path.resolve(__dirname, 'src', 'includes'),
+      from: path.resolve(__dirname, 'theme', 'include'),
       to: ''
     }]),
     new MiniCssExtractPlugin({
@@ -36,7 +36,7 @@ module.exports = {
     rules: [{
       test: /\.js$/,
 
-      include: [path.resolve(__dirname, 'src')],
+      include: [path.resolve(__dirname, 'theme', 'src')],
 
       loader: 'babel-loader',
     }, {
@@ -80,13 +80,13 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts'],
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname, 'theme', 'src')
     }
   },
 
   entry: {
-    main: './src/index.js',
-    styleguide: './src/styleguide.js',
+    main: path.resolve(__dirname, 'theme', 'src', 'index.js'),//'./src/index.js',
+    styleguide: path.resolve(__dirname, 'theme', 'src', 'styleguide.js')//'./src/styleguide.js',
   },
 
   output: {

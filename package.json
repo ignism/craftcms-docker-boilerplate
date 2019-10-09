@@ -16,7 +16,7 @@
     "dev": "webpack --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "setup": "npm run craft-compose; npm run craft-plugins; npm run craft-config; npm run craft-install; npm run craft-build; clear; echo \"\nCompleted!\n\nVisit \\x1b[4m\\x1b[34mhttp://localhost:8080/admin\\x1b[0m to sync project.yaml and finish setup.\n\n\"",
-    "postinstall": "npx tailwind init; docker-compose build"
+    "postinstall": "docker-compose build"
   },
   "keywords": [],
   "author": "",
@@ -52,9 +52,9 @@
     "scrollmagic": "^2.0.7",
     "shortid": "^2.2.14",
     "tailwindcss": "^1.0.1",
+    "terser-webpack-plugin": "^2.1.2",
     "ts-loader": "^6.0.2",
     "typescript": "^3.5.1",
-    "uglifyjs-webpack-plugin": "^2.1.3",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10",
