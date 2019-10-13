@@ -1,6 +1,6 @@
 import { eventBus } from './event-bus'
 
-class CoreEvent {
+class CoreEventListener {
   constructor(name, callback) {
     this.name = name
     this.callback = callback
@@ -9,4 +9,4 @@ class CoreEvent {
   }
 }
 
-export { CoreEvent }
+export { CoreEventListener }

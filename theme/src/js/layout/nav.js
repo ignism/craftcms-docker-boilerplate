@@ -1,6 +1,6 @@
 import { eventBus } from '../core'
 import { CoreModule } from '../core/core-module'
-import { CoreEvent } from '../core/core-event'
+import { CoreEventListener } from '../core/core-event'
 
 class Nav extends CoreModule {
   init(options) {
@@ -41,25 +41,31 @@ class Nav extends CoreModule {
   }
 
   addEventListeners() {
-    this.events.push(
-      new CoreEvent('toggle-menu', () => {
+    let events = []
+    
+    events.push(
+      new CoreEventListener('toggle-menu', () => {
         this.toggleMenu()
       })
     )
 
-    this.events.push(
-      new CoreEvent('close-menu', () => {
+    
+    events.push(
+      new CoreEventListener('close-menu', () => {
         this.closeMenu()
       })
     )
 
-    this.events.push(
-      new CoreEvent('window-resized', () => {
+    
+    events.push(
+      new CoreEventListener('window-resized', () => {
         if (window.innerWidth >= 1024) {
           this.closeMenu()
         }
       })
     )
+
+    super.events = events
   }
 
   closeMenu() {

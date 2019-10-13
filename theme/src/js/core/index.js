@@ -1,6 +1,8 @@
 import debounce from 'lodash/debounce'
 import shortid from 'shortid'
 //
+import { CoreModule } from './core-module'
+import { CoreEventListener } from './core-event'
 import { CoreScrollScene } from './core-scroll-scene'
 import { config } from './config'
 import { eventBus } from './event-bus'
@@ -16,12 +18,11 @@ class Core {
   init() {
     this.modules.forEach((module) => {
       let init = module.init(module.options)
+      
       if (!init.status) {
         console.error(init)
       }
     })
-
-    this.createScenes()
 
     eventBus.$on('barba-before-enter', () => {
       this.modules.forEach((module) => {
@@ -64,44 +65,8 @@ class Core {
       })
     }
   }
-
-  createScenes() {
-    this.scenes.push(
-      new CoreScrollScene(
-        () => {
-          return 20
-        },
-        (event) => {
-          eventBus.$emit('scrolled-from-top')
-        },
-        (event) => {
-          eventBus.$emit('scrolled-to-top')
-        },
-        false
-      )
-    )
-
-    this.scenes.push(
-      new CoreScrollScene(
-        () => {
-          return document.body.clientHeight - window.innerHeight
-        },
-        (event) => {
-          eventBus.$emit('scrolled-to-bottom')
-        },
-        (event) => {
-          eventBus.$emit('scrolled-from-bottom')
-        },
-        true
-      )
-    )
-
-    this.scenes.forEach((scene) => {
-      scene.init()
-    })
-  }
 }
 
 const core = new Core()
 
-export { core, config, eventBus, scrollController }
+export { core, config, eventBus, scrollController, CoreEventListener, CoreScrollScene, CoreModule }
