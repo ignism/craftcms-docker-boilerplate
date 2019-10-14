@@ -1,5 +1,4 @@
 import { eventBus } from './event-bus'
-import { Promise } from 'q'
 
 class CoreModule {
   constructor() {
@@ -27,7 +26,7 @@ class CoreModule {
 
   destroy() {
     this._eventListeners.forEach((event) => {
-      eventBus.off(event.name, event.callback)
+      eventBus.$off(event.name, event.callback)
     })
 
     this._scrollScenes.forEach((scene) => {

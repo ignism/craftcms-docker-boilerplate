@@ -14,14 +14,14 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new CleanWebpackPlugin([
-      path.resolve(__dirname, 'server/private/craft', 'templates'),
-      path.resolve(__dirname, 'server/public', 'dest'),
+      path.resolve(__dirname, 'server/private/craft/templates'),
+      path.resolve(__dirname, 'server/public/dest'),
     ]),
     new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, 'theme', 'templates'),
-      to: path.resolve(__dirname, 'server/private/craft', 'templates')
+      from: path.resolve(__dirname, 'theme/templates'),
+      to: path.resolve(__dirname, 'server/private/craft/templates')
     }, {
-      from: path.resolve(__dirname, 'theme', 'include'),
+      from: path.resolve(__dirname, 'theme/include'),
       to: ''
     }]),
     new MiniCssExtractPlugin({
@@ -80,17 +80,17 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts'],
     alias: {
-      '@': path.resolve(__dirname, 'theme', 'src')
+      '@': path.resolve(__dirname, 'theme/src')
     }
   },
 
   entry: {
-    main: path.resolve(__dirname, 'theme', 'src', 'index.js'),//'./src/index.js',
-    styleguide: path.resolve(__dirname, 'theme', 'src', 'styleguide.js')//'./src/styleguide.js',
+    main: path.resolve(__dirname, 'theme/src/index.js'),//'./src/index.js',
+    styleguide: path.resolve(__dirname, 'theme/src/styleguide.js')//'./src/styleguide.js',
   },
 
   output: {
-    path: path.resolve(__dirname, 'server/public', 'build'),
+    path: path.resolve(__dirname, 'server/public/build'),
     filename: 'js/[name].js'
   },
 

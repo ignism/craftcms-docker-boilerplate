@@ -11,14 +11,16 @@ class CoreScrollScene {
       (() => {
         return 0
       })
-    
-      if (typeof this.offset == 'number') {
-        this.offset = (() => { return options.offset })
+
+    if (typeof this.offset == 'number') {
+      this.offset = () => {
+        return options.offset
       }
+    }
     this.triggerHook = options.triggerHook || 1
     this.enter = options.enter || (() => {})
     this.leave = options.leave || (() => {})
-    this.reinit = options.reinit || false
+    this.once = options.once || false
   }
 
   init() {
@@ -27,10 +29,16 @@ class CoreScrollScene {
       triggerHook: this.triggerHook,
       offset: this.offset()
     })
-      .on('enter', this.enter)
-      .on('leave', this.leave)
 
-      console.log(this.scene)
+    this.scene.on('enter', () => {
+      this.enter()
+      if (this.once) {
+        this.destroy()
+      }
+    })
+    this.scene.on('leave', this.leave)
+
+    console.log(this.scene)
     scrollController.addScene(this.scene)
   }
 

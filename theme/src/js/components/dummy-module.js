@@ -1,25 +1,37 @@
-import { CoreModule, CoreScrollScene } from '../core'
+import { CoreModule, CoreScrollScene, CoreEventListener, eventBus } from '../core'
 
 class DummyModule extends CoreModule {
   init() {
-    let scenes = []
-    // console.log(this.scenes)
+    const scenes = []
+    const events = []
 
     scenes.push(
-      new CoreScrollScene(
-        () => {
-          return 20
+      new CoreScrollScene({
+        offset: () => {
+          return 1
         },
-        (event) => {
-          console.log('dummy: scrolled-from-top')
+        triggerElement: null,
+        triggerHook: 0,
+        enter: (event) => {
+          console.log('dummy enter')
+          eventBus.$emit('dummy-trigger', { message: 'test' })
         },
-        (event) => {
-          console.log('dummy: scrolled-to-top')
-        },
-        false
-      )
+        leave: (event) => {
+          console.log('dummy leave')
+        }
+      })
     )
     super.scrollScenes = scenes
+
+    events.push(
+      new CoreEventListener(
+        'dummy-trigger',
+        (event) => {
+          console.log("DummyModule -> init -> event", event)
+        }
+      )
+    )
+    super.eventListeners = events
 
     return super.init()
   }
