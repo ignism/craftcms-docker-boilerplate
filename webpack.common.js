@@ -90,7 +90,7 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, 'server/public/build'),
+    path: path.resolve(__dirname, 'server/public/dist'),
     filename: 'js/[name].js'
   },
 

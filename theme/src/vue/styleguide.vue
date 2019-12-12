@@ -112,7 +112,7 @@
 
     <section class="section">
       <div class="container">
-        <p class="text-gray-600 text-xl my-2">text size</p>
+        <h2 class="text-gray-600 text-xl my-2">text size</h2>
         <div class="row">
           <div class="col w-6/12">
             <table class="w-full">
@@ -202,6 +202,18 @@
 
     <section class="section">
       <div class="container">
+        <h2 class="text-gray-600 text-xl my-2">responsive font-size</h2>
+        <div class="row">
+          <div class="col w-6/12">
+            <p ref="responsive_font_size" class="font-display text-responsive leading-none my-2">text-responsive</p>
+            <p class="text-gray-600"><pre>calc(100vw * 64 / 1600) = {{ responsive_font_size }}</pre></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
         <h2 class="text-gray-600 text-xl my-2">fonts</h2>
         <div class="row">
           <div class="col w-6/12">
@@ -236,8 +248,18 @@ export default {
       text_3xl: 0,
       text_4xl: 0,
       text_5xl: 0,
-      text_6xl: 0
+      text_6xl: 0,
+      responsive_font_size: 0
     };
+  },
+  methods: {
+    responsiveFontSize() {
+      let size = window
+      .getComputedStyle(this.$refs.responsive_font_size)
+      .getPropertyValue("font-size");
+      size = Math.floor(parseFloat(size) * 100) / 100
+      return size + 'px'
+    }
   },
   filters: {
     convertToRem(value) {
@@ -298,6 +320,11 @@ export default {
     this.text_6xl = window
       .getComputedStyle(this.$refs.text_6xl)
       .getPropertyValue("font-size");
+    this.responsive_font_size = this.responsiveFontSize()
+
+    window.addEventListener('resize', () => {
+      this.responsive_font_size = this.responsiveFontSize()
+    })
   }
 };
 </script>

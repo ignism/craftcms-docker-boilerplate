@@ -1,30 +1,41 @@
-import { CoreModule, CoreScrollScene } from '../core'
 import anime from 'animejs'
+import { CoreScrollScene } from '../core'
+import { AnimModule } from './anim-module'
 
-class AnimFadeIn extends CoreModule {
+class AnimFadeIn extends AnimModule {
   init(options) {
-    const target = options.target || '.anim-fade-in'
-    const elements = document.querySelectorAll(target)
+    this.target = options.target || '.anim-fade-in'
+    
+    this.initScenes()
+
+    return super.init()
+  }
+
+  initScenes() {
+    const elements = document.querySelectorAll(this.target)
     const scenes = []
 
     elements.forEach((element) => {
-      const delay =
-        element.getAttribute('data-anim-delay') > 0
-          ? element.getAttribute('data-anim-delay')
-          : 0
+      const options = this.getOptionsFromAttributes(element)
 
-      element.style.opacity = 0
+      if (!element.classList.contains('anim-complete')) {
+        element.style.opacity = 0
+      }
 
       scenes.push(
         new CoreScrollScene({
-          triggerElement: element,
-          triggerHook: 0.66667,
+          triggerElement: options.trigger,
+          triggerHook: options.hook / 100,
           enter: (event) => {
             anime({
               targets: element,
               opacity: [0, 1],
               easing: 'easeOutCirc',
-              delay: delay
+              duration: options.duration,
+              delay: options.delay,
+              complete: () => {
+                element.classList.add('anim-complete')
+              }
             })
           },
           leave: (event) => {
@@ -32,16 +43,19 @@ class AnimFadeIn extends CoreModule {
               targets: element,
               opacity: [1, 0],
               easing: 'easeOutCirc',
-              delay: delay
+              duration: options.duration,
+              delay: options.delay,
+              complete: () => {
+                element.classList.add('anim-complete')
+              }
             })
-          }
+          },
+          once: options.once
         })
       )
     })
 
     super.scrollScenes = scenes
-
-    return super.init()
   }
 
   destroy() {
